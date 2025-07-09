@@ -10,7 +10,8 @@ from sklearn.ensemble import RandomForestClassifier
 
 @st.cache_data
 def load_data():
-    df = pd.read_csv("telco_churn.csv")
+    url = "https://raw.githubusercontent.com/DanielAmes/telco-applet/main/telco_churn_streamlit_app/telco_churn.csv"
+    df = pd.read_csv(url)
     df = df[df["TotalCharges"] != " "]
     df["TotalCharges"] = df["TotalCharges"].astype(float)
     df["Churn"] = df["Churn"].map({"Yes": 1, "No": 0})
